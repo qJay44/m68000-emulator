@@ -33,7 +33,6 @@ struct CPU {
 
   Word readInstructionWord(Addressable& memory);
   Instruction decode(Addressable& memory);
-
 };
 
 }

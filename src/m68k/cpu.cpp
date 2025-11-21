@@ -13,6 +13,7 @@ void CPU::init(Addressable& memory) {
   state.ssp = memory.read<LongWord>(0);
   state.pc = memory.read<LongWord>(4);
   state.status = Status::Running;
+  exit(0);
 }
 
 void CPU::step(Addressable& memory) {
