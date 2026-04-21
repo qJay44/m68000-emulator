@@ -4,14 +4,14 @@
 
 namespace m68k {
 
-class Target {
-public:
+struct Target {
   enum class Kind : Byte {
+    No,
     DataRegister,
     AddressRegister,
     Address,
     AddressPostincrement,
-    AddressDecrement,
+    AddressPredecrement,
     AddressDisplacement,
     AddressIndex,
     ProgramCounterDisplacement,
@@ -21,10 +21,9 @@ public:
     Immeadiate
   };
 
-private:
   Kind kind;
   Byte size;
-  Byte index_;
+  Byte index;
   Word extWord0;
   Word extWord1;
   LongWord address;

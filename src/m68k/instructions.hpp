@@ -1,12 +1,14 @@
 #pragma once
 
+#include "Context.hpp"
 #include "target.hpp"
 #include "types.hpp"
+#include "memory.hpp"
+#include "state.hpp"
 
 namespace m68k {
 
 struct Instruction {
-public:
   enum class Kind : Byte {
     ABCD,
     ADD,
@@ -118,14 +120,16 @@ public:
   };
 
   Kind kind;
-  Byte size;
+  Size size;
   Condition cond;
   Target src;
   Target dst;
   LongWord data;
 
-  bool has_src;
-  bool has_dst;
+  [[nodiscard]]
+  static Instruction decode(Context& context);
+
+  void execute();
 };
 
 }

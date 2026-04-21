@@ -1,13 +1,17 @@
+#include <cstdlib>
 #include <print>
 #include <unistd.h>
 
 #include "m68k/cpu.hpp"
+#include "m68k/instructions.hpp"
 #include "m68k/memory.hpp"
 
 int main() {
   std::println("_Start");
 
-  constexpr u16 rom[10] = {
+  m68k::Instruction::decode(0x0000);
+
+  constexpr u16 rom[] = {
     0x0010, 0x0000,     // Initial stack address is at 0x00100000
     0x0000, 0x0008,     // Initial PC address is at 0x8, which is the word
                         //  that follows this
